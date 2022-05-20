@@ -8,28 +8,46 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="imagens/tomate.png" type="image/x-icon">
     <link href="./icons/css/all.css" rel="stylesheet">
+    <link href="./fonts/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
     <title>Pomodoro Site</title>
 </head>
 
 <body>
     <div id="container">
-        <div class="card">
-            <div class="area-conteudo">
 
-                <div class="titulo-texto">
-                    <h1>Pomodoro</h1>
-                    <img src="./imagens/icon.png" alt="tomate" width="55px">
-                </div>
-
-                <div class="corpo">
-                    <h2>25:00</h2>
-                    <i class="fa-solid fa-circle-chevron-left seta-direita"></i>
-                    <i class="fa-solid fa-bell-slash icon-sound"></i>
-                    <i class="fa-solid fa-circle-chevron-right seta-esquerda"></i>
-                </div>
-                
-            </div>
+        <div class="titulo">
+            <h1>Pomodoro</h1>
+            <img src="./imagens/tomate.png" alt="tomate" width="50px">
         </div>
+        
+        <div class="tempo">
+            <h1 class="t1">Tempo produtivo:</h1>
+            <div class="tempo-texto">                
+                <div class="icons">
+                    <i class="fa-solid fa-caret-up" onclick="aumentarProd()"></i>
+                    <i class="fa-solid fa-caret-down" onclick="diminuirProd()"></i>
+                </div>
+                <h2 class="tempo-prod">25:00</h2>
+            </div>                
+            <h1 class="t1">Descanso:</h1>
+            <div class="tempo-texto">                
+                <div class="icons">
+                    <i class="fa-solid fa-caret-up" onclick="aumentarDesc()""></i>
+                    <i class="fa-solid fa-caret-down" onclick="diminuirDesc()"></i>
+                </div>
+                <h2 class="tempo-desc">5:00</h2>
+            </div>          
+        </div>
+
+        <button type="button" id="iniciar">iniciar</button>
+    </div>
+
+    <div id="contagem">
+        <div class="detalhe">
+            <h1 class="contador">25:00</h1>    
+        </div>
+        
     </div>
     <script src="script.js"></script>
 </body>
