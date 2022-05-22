@@ -2,7 +2,7 @@ let tempoProd = document.querySelector(".tempo-prod")
 let tempoDesc = document.querySelector(".tempo-desc")
 let minutos = 25
 let minutosDesc = 5
-let segundos = 60
+let segundos = 5
 
 function aumentarProd() {
     if(minutos < 59) {
@@ -61,4 +61,18 @@ iniciar.addEventListener('click', ()=>{
     container2.style.display = 'flex'
     contador.textContent = `${minutos}:00`
     minutos -= 1
+    contagemRegressiva()
 })
+
+function contagemRegressiva() {
+    setInterval(() => {
+        if (segundos > 0) {
+            segundos -= 1
+            return contador.textContent = `${minutos}:${segundos}`
+        } else if (segundos == 0) {
+            minutos -= 1
+            segundos = 60
+            return contador.textContent = `${minutos}:00`
+        }
+    }, 1000)
+}
