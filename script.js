@@ -1,6 +1,6 @@
 let tempoProd = document.querySelector(".tempo-prod")
 let tempoDesc = document.querySelector(".tempo-desc")
-let minutos = 1
+let minutos = 25
 let minutosDesc = 5
 let segundos = 0
 
@@ -58,22 +58,26 @@ let container2 = document.querySelector("#contagem")
 let contador = document.querySelector(".contador")
 
 iniciar.addEventListener('click', ()=>{
+
     container1.style.display = 'none'
     container2.style.display = 'flex'
-    contador.textContent = formatandoString(segundos, minutos)    
-    ciclos()
+    contador.textContent = formatandoString(segundos, minutos)
+    trocandoCiclo()
 })
 
-function contagemRegressiva() {
+
+function contagem(s, m) {
     setInterval(() => {
-        if (segundos == 0 && minutos > 0) {
-            minutos -= 1
-            segundos = 59           
-            return contador.textContent = formatandoString(segundos, minutos)
-        } else if (segundos > 0 && minutos >= 0) {
-            segundos -= 1
-            return contador.textContent = formatandoString(segundos, minutos)
-        } 
+        if (s == 0 && m > 0) {
+            m -= 1
+            s = 59           
+            return contador.textContent = formatandoString(s, m)
+        } else if (s > 0 && m >= 0) {
+            s -= 1
+            return contador.textContent = formatandoString(s, m)
+        } else if (s == 0 && m == 0) {
+            return contagem(segundos, minutosDesc)
+        }
     }, 1000)
 }
 
@@ -90,24 +94,15 @@ function formatandoString(s, m) {
     
 }
 
-function tempoDoDescanso() {
-    setInterval(() => {
-        if (segundos == 0 && minutosDesc > 0) {
-            minutosDesc -= 1
-            segundos = 59           
-            return contador.textContent = formatandoString(segundos, minutosDesc)
-        } else if (segundos > 0 && minutosDesc >= 0) {
-            segundos -= 1
-            return contador.textContent =  formatandoString(segundos, minutosDesc)
-        }
-    }, 1000)
-}
 
-function ciclos() {
-    if (minutos == 0 && segundos == 0) {
-        return (contador.textContent = formatandoString(segundos, minutosDesc),tempoDoDescanso())
-    } else {
-        return contagemRegressiva()
+//trocando de ciclo
+function trocandoCiclo() {
+    let bool = prompt("você deseja fazer um ciclo? digite 'sim' ou 'nao'")
+
+    if (bool === 'sim') {
+        return contagem(segundos, minutos)
+    } else if (bool === 'nao') {
+        container1.style.display = 'flex'
+        container2.style.display = 'none' 
     }
 }
-//trocando de ciclo
